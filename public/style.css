@@ -1,0 +1,8 @@
+.mdl-layout__tab-bar.mdl-js-ripple-effect{
+	list-style: none;
+}
+
+.dropdown-content a{
+	text-decoration: none;
+	color: white;
+}
