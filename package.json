@@ -1,0 +1,24 @@
+{
+  "name": "bc-19-library-application",
+  "version": "1.0.0",
+  "description": "A book library application for borrowing of books.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vynessa/bc-19-library-application.git"
+  },
+  "author": "Vanessa Ejikeme",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vynessa/bc-19-library-application/issues"
+  },
+  "homepage": "https://github.com/Vynessa/bc-19-library-application#readme",
+  "dependencies": {
+    "express": "^4.14.1",
+    "firebase": "^3.6.9",
+    "firebase-admin": "^4.1.1"
+  }
+}
