@@ -1,0 +1,60 @@
+{
+  "books": 
+  {
+    "name": "I know why the caged bird sings",
+    "category": "Autobiography",
+    "author": {
+    	"name": "Maya Angelou",
+    	"isbn": 8782948208474
+    }
+  }, 
+
+  {
+    "name": "Everything good will come",
+    "category": "Fiction",
+    "author": {
+    	"name": "Seffi Atta",
+    	"isbn": 8782948208474
+    }
+  }, 
+  {
+	"name": "The Nightingale",
+	"category": "Fiction",
+	"author": {
+		"name": "Kristin Hannah",
+		"isbn": 8782948208474
+    }
+  }, {
+  	"name": "I Am Zlatan",
+  	"category": "Autobiography",
+  	"author": {
+    	 "name": "Zlatan Ibrahimovic",
+    	 "isbn": 8782948208474
+    }
+  }, {
+  	"name": "The Chancellor Manuscript",
+  	"category": "Non-Fiction",
+  	"author": {
+    	"name": "Robert Ludlum",
+    	"isbn": 8782948208474
+    }
+  }
+  },
+
+  "users": {
+  	"adminUser": {
+  		"userId": "vanessa",
+  		"email": "vanessa.ejikeme@gmail.com",
+  		"password": "vynessa123",
+  		"role": "regular"
+
+  	},
+
+  	"regularUser": {
+  		"userId": "mercy",
+  		"email": "mercy@gmail.com",
+  		"password": "mercy123",
+  		"role": "regular" 
+  	}
+  }
+}
