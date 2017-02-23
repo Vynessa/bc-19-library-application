@@ -4,7 +4,8 @@
   "description": "A book library application for borrowing of books.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,10 @@
   "dependencies": {
     "express": "^4.14.1",
     "firebase": "^3.6.9",
-    "firebase-admin": "^4.1.1"
+    "nodemon": "^1.11.0"
+  },
+  "devDependencies": {
+    "body-parser": "^1.16.1",
+    "dotenv": "^4.0.0"
   }
 }
