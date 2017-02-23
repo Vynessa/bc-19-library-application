@@ -2,7 +2,7 @@
   "name": "bc-19-library-application",
   "version": "1.0.0",
   "description": "A book library application for borrowing of books.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"

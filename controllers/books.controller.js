@@ -91,16 +91,17 @@ var BookController = {
     },
 
     getBooks: function(req, res){
-        var bookRef = ref.child('data');
+        var bookRef = ref.child('books');
             bookRef.on('value', function(snapshot){
             console.log(snapshot.val());
-            }) 
+            return res.status(200).json({snapshot: snapshot.val()})
+        })
 
-        ref.once("value", function(data) {
-            console.log('Hello')
-          // do some stuff once
-          return res.status(200).json({data})
-        });
+        // ref.once("value", function(data) {
+        //     console.log('Hello')
+        //   // do some stuff once
+        //   return res.status(200).json({data})
+        // });
     }
 }
 
