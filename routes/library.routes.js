@@ -23,7 +23,8 @@ router.get('/categories', (req, res) => {
   res.render('pages/categories', {title: 'Categories'});
 });
 
-router.get('/bookdelete', booksCtrl.deleteBooks)
+router.get('/bookdelete', (req, res) => {
+  res.render('pages/categories', {title: 'Categories'});
 });
 
 router.get('/login', (req, res) => {

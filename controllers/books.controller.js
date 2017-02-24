@@ -29,19 +29,7 @@ var BookController = {
         var booksRef = ref.child('books');
         ref.child('books').on('child_changed', function (snapshot) {
             console.log('changed', snapshot.val());
-        });
-
-        // if(!req.body){
-        //     return res.status(400).send({
-        //         message:"Failed to Update Record",
-        //         success: false
-        //     });
-        // }
-        // else{
-        //     return res.status(201).send({
-        //         message: "Record has been Updated"
-        //     });
-        // }
+        });  
 
     },
 
@@ -61,12 +49,6 @@ var BookController = {
                 message: "Record has been Deleted"
             });
         }
-
-        // var booksRef = ref.child('books');
-        // booksRef.on('child_remove', function (snapshot) {
-        //     console.log('remove', snapshot.val());
-        // });
-
     },
 
     getBooks: function (req, res) {
@@ -74,14 +56,13 @@ var BookController = {
         bookRef.orderByKey().once('value').then(function (books) {
             var bookObjs = [];
             var _books = books.val();
-            // console.log(_books)
+           
             for (var x in _books) {
                 _books[x].key = x
                 bookObjs.push(_books[x]);
-                console.log(x);
+               
             }
-            console.log(bookObjs);
-            //   console.log("books", bookObjs)
+            
             res.render('pages/books', {
                 books: bookObjs
             });

@@ -111,7 +111,6 @@
       <th class="mdl-data-table__cell--non-numeric">Title</th>
       <th class="mdl-data-table__cell--non-numeric">Category</th>
       <th>Quantity</th>
-      <th class="mdl-data-table__cell--non-numeric">Keys</th>
       <th>Update</th>
       <th>Delete</th>
     </tr>
@@ -124,7 +123,6 @@
         <td class="mdl-data-table__cell--non-numeric"><%= book.title %></td>
         <td class="mdl-data-table__cell--non-numeric"><%= book.category %></td>
         <td><%= book.quantity %></td>
-        <td class="mdl-data-table__cell--non-numeric"><%= book.key %></td> 
         <td>
         <a class = "btn btn-primary" href = "/bookupdate?id=<%= book.key %>">Update</a>
         </td>
