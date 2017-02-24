@@ -26,9 +26,6 @@
       <li><a href="/" class="mdl-layout__tab">Home</a></li>
       <li><a href="/books" class="mdl-layout__tab">Books</a></li>
       <li><a href="/categories" class="mdl-layout__tab">Categories</a>
-      <!-- <li><a href="#scroll-tab-4" class="mdl-layout__tab">Tab 4</a></li>
-      <li><a href="#scroll-tab-5" class="mdl-layout__tab">Tab 5</a></li>
-      <li><a href="#scroll-tab-6" class="mdl-layout__tab">Tab 6</a></li> -->
     </div>
   </header>
   <div class="mdl-layout__drawer">
@@ -105,6 +102,7 @@
   </form>
 </div>
 
+
 <center>
 <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
   <thead>
@@ -113,36 +111,35 @@
       <th class="mdl-data-table__cell--non-numeric">Title</th>
       <th class="mdl-data-table__cell--non-numeric">Category</th>
       <th>Quantity</th>
+      <th class="mdl-data-table__cell--non-numeric">Keys</th>
+      <th>Update</th>
+      <th>Delete</th>
     </tr>
   </thead>
-  <tbody>
   <!--Get book information from firebase and loop it through the table -->
-    <tr>
-      <td class="mdl-data-table__cell--non-numeric">books.author</td>
-      <td class="mdl-data-table__cell--non-numeric">books.title</td>
-      <td class="mdl-data-table__cell--non-numeric">books.category</td>
-      <td>books.quantity</td>
-    </tr>
+<tbody>
+    <% books.forEach(function(book, index) {%>
+      <tr>
+        <td class="mdl-data-table__cell--non-numeric"><%= book.author %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= book.title %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= book.category %></td>
+        <td><%= book.quantity %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= book.key %></td> 
+        <td>
+        <a class = "btn btn-primary" href = "/bookupdate?id=<%= book.key %>">Update</a>
+        </td>
+        <td>
+        <a class = "btn btn-primary" href = "/bookdelete?id=<%= book.key %>">Delete</a>
+        </td>
 
-    <!-- <tr>
-      <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
-      <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-      <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-      <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-      <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-      <td>10</td>
-    </tr> -->
-
+      </tr>
+    <% }); %>
   </tbody>
 </table>
 </center>
 </div>
 </main>
 </div>
-<script>
-  $
+
+</body>
 </html>

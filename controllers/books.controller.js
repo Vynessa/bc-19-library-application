@@ -6,50 +6,28 @@ var author, title, category, quantity;
 var BookController = {
     createBooks: function (req, res) {
         var bookRef = ref.child('books');
-            bookRef.on('value', function(snapshot){
+        bookRef.on('value', function (snapshot) {
             console.log(snapshot.val());
-            }) 
+        })
 
         ref.child('books').push({
             author: req.body.author,
             title: req.body.title,
             category: req.body.category,
-            quantity: req.body.quantity 
+            quantity: req.body.quantity
 
         });
 
-        
+        res.redirect('/books');
 
-        
-
-
-        // var booksRef = ref.child('books');
-        // booksRef.orderByKey().limitToLast(1).on('child_added', function(snapshot){
-        //     res.render('books', {added:snapshot.val()});
-        // });
-
-
-
-        // if (!req.body.author || !req.body.title || !req.body.category || !req.body.quantity) {
-        //     return res.status(422).send({
-        //         message: 'All fields are required',
-        //         success: false
-        //     });
-        // }
-
-        // else {
-        //     return res.status(201).send({
-        //         message: "All good"
-        //     });
-        // }
     },
 
-    updateBooks: function(req, res){
+    updateBooks: function (req, res) {
         var id = req.params.id
         ref.child('books').child(id).update(req.body)
 
         var booksRef = ref.child('books');
-        ref.child('books').on('child_changed', function(snapshot){
+        ref.child('books').on('child_changed', function (snapshot) {
             console.log('changed', snapshot.val());
         });
 
@@ -67,42 +45,49 @@ var BookController = {
 
     },
 
-    deleteBooks: function(req, res){
+    deleteBooks: function (req, res) {
         var id = req.params.id
         ref.child('books').child(id).remove()
 
-        var booksRef = ref.child('books');
-        booksRef.on('child_remove', function(snapshot){
-            console.log('remove', snapshot.val());
-        });
+        if(!req.body){
+            return res.status(402).send({
+                message:"Failed to Deleted",
+                success: false
+            });
+        }
 
-        // if(!req.body){
-        //     return res.status(402).send({
-        //         message:"Failed to Deleted",
-        //         success: false
-        //     });
-        // }
+        else{
+            return res.status(201).send({
+                message: "Record has been Deleted"
+            });
+        }
 
-        // else{
-        //     return res.status(201).send({
-        //         message: "Record has been Deleted"
-        //     });
-        // }
+        // var booksRef = ref.child('books');
+        // booksRef.on('child_remove', function (snapshot) {
+        //     console.log('remove', snapshot.val());
+        // });
+
     },
 
-    getBooks: function(req, res){
+    getBooks: function (req, res) {
         var bookRef = ref.child('books');
-            bookRef.on('value', function(snapshot){
-            console.log(snapshot.val());
-            return res.status(200).json({snapshot: snapshot.val()})
-        })
-
-        // ref.once("value", function(data) {
-        //     console.log('Hello')
-        //   // do some stuff once
-        //   return res.status(200).json({data})
-        // });
+        bookRef.orderByKey().once('value').then(function (books) {
+            var bookObjs = [];
+            var _books = books.val();
+            // console.log(_books)
+            for (var x in _books) {
+                _books[x].key = x
+                bookObjs.push(_books[x]);
+                console.log(x);
+            }
+            console.log(bookObjs);
+            //   console.log("books", bookObjs)
+            res.render('pages/books', {
+                books: bookObjs
+            });
+        });
     }
+
 }
 
 module.exports = BookController;

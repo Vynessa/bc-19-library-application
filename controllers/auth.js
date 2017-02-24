@@ -26,13 +26,16 @@ function createUsers(req, res){
             var errorMessage = error.message;
             if (errorcode == 'auth/weak-password'){
                 console.log('The password is too weak.');
-            } else{
-                console.log(errorMessage);
+                res.redirect('/signup')
+            }
+            else if (errorMessage === 'The email address is already in use by another account.' ){
+                res.redirect('/login');
+            }
+             else{
+                res.redirect('/signup')
             }
             console.log(error);
         });
-
-    
 }
 
 function signIn(req, res){
@@ -44,10 +47,15 @@ function signIn(req, res){
         .catch(function(error){
             var errorcode = error.code;
             var errorMessage = error.message;
-            if (errorcode == 'auth/wrong-password'){
-                console.log('The password is wrong.');
-            } else{
-                console.log(errorMessage);
+            if (errorcode == 'auth/weak-password'){
+                console.log('The password is too weak.');
+                res.redirect('/login')
+            }
+            else if (errorMessage === 'There is no user record corresponding to this identifier. The user may have been deleted.' ){
+                res.redirect('/signup');
+            }
+             else{
+                res.redirect('/login')
             }
             console.log(error);
         });
